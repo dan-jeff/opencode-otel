@@ -26,14 +26,14 @@ cd opencode-otel
 npm install
 ```
 
-3. Build the plugin:
+3. Build and bundle the plugin:
 ```bash
-npm run build
+npm run bundle
 ```
 
-4. Copy the plugin to your OpenCode plugins directory:
+4. Install the plugin globally:
 ```bash
-cp .opencode/plugin/otel-plugin.js ~/.opencode/plugins/
+cp dist/otel-plugin.bundle.js ~/.opencode/plugin/otel-plugin.js
 ```
 
 5. Configure your OTEL settings in `~/.opencode/otel-config.json`:
@@ -49,8 +49,11 @@ cp .opencode/plugin/otel-plugin.js ~/.opencode/plugins/
 
 ## Configuration
 
-The plugin reads configuration from `.opencode/otel-config.json`:
+The plugin reads configuration from `.opencode/otel-config.json` in the following order:
+1. Local project config: `./.opencode/otel-config.json` (in current directory)
+2. Global config: `~/.opencode/otel-config.json` (in home directory)
 
+Configuration options:
 - `endpoint`: OTEL collector endpoint (default: `http://localhost:4318/v1/traces`)
 - `headers`: Custom headers for authentication (e.g., API keys)
 - `serviceName`: Service name for tracing (default: `opencode`)

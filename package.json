@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
+    "bundle": "esbuild .opencode/plugin/otel-plugin.ts --bundle --platform=node --format=esm --outfile=dist/otel-plugin.bundle.js --external:@opencode-ai/plugin",
     "dev": "tsc --watch",
     "clean": "rm -rf dist",
     "prepublishOnly": "npm run clean && npm run build"
@@ -35,13 +36,14 @@
   "dependencies": {
     "@opencode-ai/plugin": "latest",
     "@opentelemetry/api": "^1.9.0",
-    "@opentelemetry/sdk-trace-node": "^1.25.0",
     "@opentelemetry/exporter-trace-otlp-http": "^0.52.0",
+    "@opentelemetry/resources": "^1.25.0",
     "@opentelemetry/sdk-trace-base": "^1.25.0",
-    "@opentelemetry/resources": "^1.25.0"
+    "@opentelemetry/sdk-trace-node": "^1.25.0"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
+    "esbuild": "^0.25.10",
     "typescript": "^5.0.0"
   },
   "files": [

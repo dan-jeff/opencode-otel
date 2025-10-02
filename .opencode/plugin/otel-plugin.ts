@@ -14,7 +14,8 @@ interface OTelConfig {
 }
 
 const plugin: Plugin = async () => {
-  const configPath = resolve(process.cwd(), '.opencode/otel-config.json')
+  const localConfigPath = resolve(process.cwd(), '.opencode/otel-config.json')
+  const globalConfigPath = resolve(process.env['HOME'] || '', '.opencode/otel-config.json')
   
   let config: OTelConfig = {
     endpoint: 'http://localhost:4318/v1/traces',
@@ -22,6 +23,8 @@ const plugin: Plugin = async () => {
     serviceName: 'opencode'
   }
 
+  const configPath = existsSync(localConfigPath) ? localConfigPath : globalConfigPath
+  
   if (existsSync(configPath)) {
     try {
       const configData = readFileSync(configPath, 'utf-8')
