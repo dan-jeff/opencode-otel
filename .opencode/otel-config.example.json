@@ -1,0 +1,7 @@
+{
+  "endpoint": "https://api.honeycomb.io/v1/traces",
+  "headers": {
+    "x-honeycomb-team": "YOUR_API_KEY_HERE"
+  },
+  "serviceName": "opencode-custom"
+}

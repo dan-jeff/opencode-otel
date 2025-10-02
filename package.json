@@ -1,0 +1,52 @@
+{
+  "name": "opencode-otel-plugin",
+  "version": "1.0.0",
+  "description": "OpenTelemetry plugin for OpenCode to collect telemetry data including token counts and model names",
+  "main": "dist/plugin/otel-plugin.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "opencode",
+    "opentelemetry",
+    "telemetry",
+    "observability",
+    "llm",
+    "token-tracking",
+    "plugin"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/opencode-otel-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/opencode-otel-plugin/issues"
+  },
+  "homepage": "https://github.com/your-username/opencode-otel-plugin#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@opencode-ai/plugin": "latest",
+    "@opentelemetry/api": "^1.9.0",
+    "@opentelemetry/sdk-trace-node": "^1.25.0",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.52.0",
+    "@opentelemetry/sdk-trace-base": "^1.25.0",
+    "@opentelemetry/resources": "^1.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ]
+}
