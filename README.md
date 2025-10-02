@@ -10,17 +10,15 @@ A custom OpenCode plugin that collects telemetry data including token counts, mo
 - **Tool Execution Tracking**: Monitors tool name and arguments
 - **LLM Token Tracking**: Captures input/output/total tokens across different providers
 - **Event Monitoring**: Tracks various event types in the OpenCode ecosystem
-- **Multi-Provider Support**: Works with different LLM providers (OpenAI, Gemini, etc.)
+- **Multi-Provider Support**: Works with different LLM providers (Anthropic, Gemini, Z.ai)
 - **Configurable Endpoints**: Supports Honeycomb, custom OTEL collectors, and more
 
 ## Installation
 
-### From Source
-
 1. Clone this repository:
 ```bash
-git clone https://github.com/your-username/opencode-otel-plugin.git
-cd opencode-otel-plugin
+git clone https://github.com/dan-jeff/opencode-otel.git
+cd opencode-otel
 ```
 
 2. Install dependencies:
@@ -93,72 +91,30 @@ This plugin sends the following attributes to your OpenTelemetry collector:
 
 ## Supported Providers
 
-| Provider | Verified |
-|----------|----------|
+| Provider | Status |
+|----------|--------|
 | Anthropic Claude | ✅ |
 | Google Gemini | ✅ |
 | Z.ai | ✅ |
-| OpenAI | ❌ |
-| Other OTEL-compatible providers | ❌ |
 
 ## Development
 
-### Setup
-
-1. Fork and clone the repository
-2. Install dependencies:
-```bash
-npm install
-```
-
 ### Building
 
-Build the TypeScript source:
 ```bash
 npm run build
 ```
 
-### Development Mode
+### Watch Mode
 
-Watch mode for continuous compilation:
 ```bash
 npm run dev
 ```
 
-### Testing
-
-Manual testing:
-1. Build the plugin with `npm run build`
-2. Configure `.opencode/otel-config.json` with your OTEL endpoint
-3. Run [OpenCode](https://opencode.ai/) with the plugin enabled
-4. Monitor your telemetry backend for incoming traces
-
 ## Contributing
 
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines including:
-
-- Code of conduct
-- Development setup
-- Code style guidelines
-- Commit message conventions
-- Pull request process
-
-Quick start:
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes and build (`npm run build`)
-4. Commit your changes (`git commit -m 'feat: Add amazing feature'`)
-5. Push to the branch (`git push origin feature/amazing-feature`)
-6. Open a Pull Request
+Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-Copyright (c) 2025. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software.
-
-## Acknowledgments
-
-- Built for [OpenCode](https://opencode.ai/) - an AI-powered coding assistant
-- Uses [OpenTelemetry](https://opentelemetry.io/) for observability
-- Supports multiple telemetry backends including Honeycomb and custom OTEL collectors
+MIT License - see [LICENSE](LICENSE) file for details.
