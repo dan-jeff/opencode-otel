@@ -42,19 +42,9 @@ npm install
 npm run bundle
 ```
 
-4. Install the plugin globally:
+4. Install the plugin globally (all dependencies are bundled, ~2MB):
 ```bash
-# Copy plugin
 cp dist/otel-plugin.bundle.js ~/.opencode/plugin/otel-plugin.js
-
-# Install OpenTelemetry dependencies in plugin directory
-cd ~/.opencode/plugin
-npm init -y
-npm install @opentelemetry/api@^1.9.0 \
-  @opentelemetry/sdk-trace-node@^1.25.0 \
-  @opentelemetry/exporter-trace-otlp-http@^0.52.0 \
-  @opentelemetry/sdk-trace-base@^1.25.0 \
-  @opentelemetry/resources@^1.25.0
 ```
 
 5. Configure your OTEL settings in `~/.opencode/otel-config.json`:

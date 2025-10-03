@@ -13,17 +13,7 @@ mkdir -p ~/.opencode/plugin
 echo "Installing plugin..."
 cp dist/otel-plugin.bundle.js ~/.opencode/plugin/otel-plugin.js
 
-echo "Installing dependencies in plugin directory..."
-cd ~/.opencode/plugin
-npm init -y --silent
-npm install --silent \
-  @opentelemetry/api@^1.9.0 \
-  @opentelemetry/sdk-trace-node@^1.25.0 \
-  @opentelemetry/exporter-trace-otlp-http@^0.52.0 \
-  @opentelemetry/sdk-trace-base@^1.25.0 \
-  @opentelemetry/resources@^1.25.0
-
-echo "Plugin installed successfully!"
+echo "Plugin installed successfully! (All dependencies bundled: $(du -h dist/otel-plugin.bundle.js | cut -f1))"
 echo ""
 echo "Next steps:"
 echo "1. Configure your OTEL settings in ~/.opencode/otel-config.json"
