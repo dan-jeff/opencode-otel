@@ -15,7 +15,7 @@ interface OTelConfig {
 
 const plugin: Plugin = async () => {
   const localConfigPath = resolve(process.cwd(), '.opencode/otel-config.json')
-  const globalConfigPath = resolve(process.env['HOME'] || '', '.opencode/otel-config.json')
+  const globalConfigPath = resolve(process.env['HOME'] || '', '.config/opencode/otel-config.json')
   
   let config: OTelConfig = {
     endpoint: 'http://localhost:4318/v1/traces',
@@ -148,4 +148,4 @@ const plugin: Plugin = async () => {
   }
 }
 
-export default plugin
+export const OtelPlugin = plugin
