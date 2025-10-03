@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "bundle": "esbuild .opencode/plugin/otel-plugin.ts --bundle --platform=node --format=esm --outfile=dist/otel-plugin.bundle.js --external:@opencode-ai/plugin",
+    "bundle": "esbuild .opencode/plugin/otel-plugin.ts --bundle --platform=node --format=esm --outfile=dist/otel-plugin.bundle.js --packages=external",
     "dev": "tsc --watch",
     "clean": "rm -rf dist",
     "prepublishOnly": "npm run clean && npm run build"

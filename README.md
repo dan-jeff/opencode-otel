@@ -15,6 +15,17 @@ A custom OpenCode plugin that collects telemetry data including token counts, mo
 
 ## Installation
 
+### Quick Install (Recommended)
+
+```bash
+git clone https://github.com/dan-jeff/opencode-otel.git
+cd opencode-otel
+npm install
+./install.sh
+```
+
+### Manual Install
+
 1. Clone this repository:
 ```bash
 git clone https://github.com/dan-jeff/opencode-otel.git
@@ -33,7 +44,17 @@ npm run bundle
 
 4. Install the plugin globally:
 ```bash
+# Copy plugin
 cp dist/otel-plugin.bundle.js ~/.opencode/plugin/otel-plugin.js
+
+# Install OpenTelemetry dependencies in plugin directory
+cd ~/.opencode/plugin
+npm init -y
+npm install @opentelemetry/api@^1.9.0 \
+  @opentelemetry/sdk-trace-node@^1.25.0 \
+  @opentelemetry/exporter-trace-otlp-http@^0.52.0 \
+  @opentelemetry/sdk-trace-base@^1.25.0 \
+  @opentelemetry/resources@^1.25.0
 ```
 
 5. Configure your OTEL settings in `~/.opencode/otel-config.json`:
