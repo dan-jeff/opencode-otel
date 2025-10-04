@@ -13,16 +13,28 @@ A custom OpenCode plugin that collects telemetry data including token counts, mo
 - **Multi-Provider Support**: Works with different LLM providers (Anthropic, Gemini, Z.ai)
 - **Configurable Endpoints**: Supports Honeycomb, custom OTEL collectors, and more
 
+## Version
+
+**Current Version: 1.0.0**
+
 ## Installation
 
-### Quick Install (Recommended)
+### Global Installation (Recommended)
+
+The easiest way to install the plugin globally:
 
 ```bash
 git clone https://github.com/dan-jeff/opencode-otel.git
 cd opencode-otel
 npm install
-./install.sh
+npm run build && npm run bundle
+npm install -g .
 ```
+
+The `npm install -g .` command will:
+- Install the plugin globally
+- Automatically copy the bundled plugin to `~/.config/opencode/plugin/`
+- Set up the plugin for use in any directory
 
 ### Manual Install
 
@@ -39,15 +51,15 @@ npm install
 
 3. Build and bundle the plugin:
 ```bash
-npm run bundle
+npm run build && npm run bundle
 ```
 
-4. Install the plugin globally (all dependencies are bundled, ~2MB):
+4. Install the plugin globally:
 ```bash
-cp dist/otel-plugin.bundle.js ~/.opencode/plugin/otel-plugin.js
+npm install -g .
 ```
 
-5. Configure your OTEL settings in `~/.opencode/otel-config.json`:
+5. Configure your OTEL settings in `~/.config/opencode/otel-config.json`:
 ```json
 {
   "endpoint": "https://api.honeycomb.io/v1/traces",
@@ -60,9 +72,11 @@ cp dist/otel-plugin.bundle.js ~/.opencode/plugin/otel-plugin.js
 
 ## Configuration
 
-The plugin reads configuration from `.opencode/otel-config.json` in the following order:
+The plugin reads configuration from `otel-config.json` in the following order:
 1. Local project config: `./.opencode/otel-config.json` (in current directory)
-2. Global config: `~/.opencode/otel-config.json` (in home directory)
+2. Global config: `~/.config/opencode/otel-config.json` (in home directory)
+
+**Note**: The global config location is `~/.config/opencode/otel-config.json` (not `~/.opencode/`)
 
 Configuration options:
 - `endpoint`: OTEL collector endpoint (default: `http://localhost:4318/v1/traces`)
@@ -116,13 +130,29 @@ This plugin sends the following attributes to your OpenTelemetry collector:
 ### Building
 
 ```bash
-npm run build
+npm run build          # Compile TypeScript
+npm run bundle         # Create bundled version for distribution
 ```
 
 ### Watch Mode
 
 ```bash
-npm run dev
+npm run dev            # Watch TypeScript compilation
+```
+
+### Publishing Updates
+
+When updating the plugin version:
+
+1. Update version in `package.json`
+2. Run full build process:
+```bash
+npm run clean && npm run build && npm run bundle
+```
+3. Commit and push changes
+4. Users can update with:
+```bash
+npm update -g opencode-otel-plugin
 ```
 
 ## Contributing

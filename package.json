@@ -9,7 +9,8 @@
     "bundle": "esbuild src/otel-plugin.ts --bundle --platform=node --format=esm --outfile=dist/otel-plugin.bundle.js --external:@opencode-ai/plugin --external:async_hooks --external:perf_hooks --external:worker_threads --external:diagnostics_channel --external:inspector --external:node:async_hooks --external:node:perf_hooks --external:node:worker_threads --external:node:diagnostics_channel --external:node:inspector",
     "dev": "tsc --watch",
     "clean": "rm -rf dist",
-    "prepublishOnly": "npm run clean && npm run build"
+    "prepublishOnly": "npm run clean && npm run build && npm run bundle",
+    "postinstall": "cp dist/otel-plugin.bundle.js ~/.config/opencode/plugin/ 2>/dev/null || true"
   },
   "keywords": [
     "opencode",

@@ -148,4 +148,5 @@ const plugin: Plugin = async () => {
   }
 }
 
+export default plugin
 export const OtelPlugin = plugin
